@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import learn.books.books.entities.Book;
@@ -31,8 +32,11 @@ public class BookController {
     }
 
     @PostMapping("/books")
-    public ResponseEntity<Book> createBook(Book book) {
-                return ResponseEntity.ok(book);
+    public Book createBook(@RequestBody Book book) {
+
+        Book b = this.bookService.postBook(book);
+        return b;
+
     }
 
 }
